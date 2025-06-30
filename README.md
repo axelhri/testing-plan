@@ -33,6 +33,6 @@
 
 ## Tableau de tests
 
-| ID du test | Type de test  | Description                              | Ressources | Résultat attendu                             | Priorité |
-| ---------- | ------------- | ---------------------------------------- | ---------- | -------------------------------------------- | -------- |
-| T1         | Test unitaire | Vérifier la participation à un événement | PHPUnit    | L’utilisateur est bien inscrit à l’événement | Moyenne  |
+| ID du test | Type de test  | Description                              | Résultat attendu                             | Ressources | Priorité |
+| ---------- | ------------- | ---------------------------------------- | -------------------------------------------- | ---------- | -------- |
+| T1         | Test unitaire | Vérifier la participation à un événement | L’utilisateur est bien inscrit à l’événement | PHPUnit    | Moyenne  |
