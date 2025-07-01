@@ -28,3 +28,44 @@ public class CalculatorServiceTest {
     }
 }
 ```
+
+## Exemple Concret avec Mockito
+
+Cette methode de test vérifie que le nom de l'utilisateur trouvé est bien égal à `"Axel"`, si oui le test passe.
+
+```java
+    @Override
+    public String getStudent(UUID studentId) {
+        return studentRepository.findById(studentId).map(Student::getName).orElse("L'étudiant n'éxiste pas");
+    }
+```
+
+```java
+@ExtendWith(MockitoExtension.class)
+class StudentServiceTest {
+
+    @Mock
+    StudentRepository studentRepository;
+
+    @InjectMocks
+    StudentService studentService;
+
+    @Test
+    void getStudent() {
+        /* Arrange */
+        Student student = new Student(
+                "Axel",
+                "axel@gmail.com",
+                LocalDate.of(2000,04,03)
+        );
+
+        Mockito.when(studentRepository.findById(student.getId())).thenReturn(Optional.of(student));
+
+        /* Act */
+        String result = studentService.getStudent(student.getId());
+
+        /* Assert */
+        Assertions.assertEquals("Axel", result);
+    }
+}
+```
